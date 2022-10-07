@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct CurrencyExchangeResultEntity: Codable {
-    let amount: Decimal
-    let currency: String
+public struct CurrencyExchangeResultEntity: Codable {
+    public let amount: Decimal
+    public let currency: String
 
-    init(amount: String, currency: String) {
+    public init(amount: String, currency: String) {
         self.amount = Decimal(string: amount) ?? 0.0
         self.currency = currency
     }

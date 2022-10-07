@@ -7,12 +7,17 @@
 
 import Foundation
 
-protocol Currency: Hashable {
+public protocol Currency: Hashable {
     var name: String { get }
     var symbol: String { get }
 }
 
-struct CurrencyEntity: Currency {
-    let name: String
-    let symbol: String
+public struct CurrencyEntity: Currency {
+    public let name: String
+    public let symbol: String
+
+    public init(name: String, symbol: String) {
+        self.name = name
+        self.symbol = symbol
+    }
 }

@@ -8,28 +8,28 @@
 import Factory
 import Foundation
 
-protocol CurrencyConverterUseCaseInterface {
+public protocol CurrencyConverterUseCaseInterface {
     func getExchangedValue(amount: String, fromCurrency: CurrencyEntity, toCurrency: CurrencyEntity) async throws -> CurrencyExchangeResultEntity
     func getAvailableCurrencies() async throws -> [CurrencyEntity]
 }
 
-final class CurrencyConverterUseCase: CurrencyConverterUseCaseInterface {
+public final class CurrencyConverterUseCase: CurrencyConverterUseCaseInterface {
 
     // MARK: - Private Properties
-    @Injected(Container.currencyConverterDataRepository)
+    @Injected(Dependencies.core.currencyConverterDataRepository)
     private var dataRepo: CurrencyConverterDataInterface
 
     // MARK: - Exposed Methods
-    func getExchangedValue(amount: String, fromCurrency: CurrencyEntity, toCurrency: CurrencyEntity) async throws -> CurrencyExchangeResultEntity {
+    public func getExchangedValue(amount: String, fromCurrency: CurrencyEntity, toCurrency: CurrencyEntity) async throws -> CurrencyExchangeResultEntity {
         try await dataRepo.getExchangedValue(amount: amount, fromCurrency: fromCurrency, toCurrency: toCurrency)
     }
 
-    func getAvailableCurrencies() async throws -> [CurrencyEntity] {
+    public func getAvailableCurrencies() async throws -> [CurrencyEntity] {
         try await dataRepo.getAvailableCurrencies()
     }
 
 }
 
-extension Container {
+public extension Container {
     static let currencyConverterUseCase = Factory { CurrencyConverterUseCase() as CurrencyConverterUseCaseInterface }
 }

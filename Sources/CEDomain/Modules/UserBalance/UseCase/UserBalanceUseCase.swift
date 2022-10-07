@@ -9,24 +9,24 @@ import Factory
 import Foundation
 
 // MARK: - UseCase Interface
-protocol UserBalanceUseCaseInterface {
+public protocol UserBalanceUseCaseInterface {
     func getBalances() async throws -> [BalanceEntity]
 }
 
 // MARK: - UseCase
-final class UserBalanceUseCase: UserBalanceUseCaseInterface {
+public final class UserBalanceUseCase: UserBalanceUseCaseInterface {
 
     // MARK: - Private Properties
-    @Injected(Container.userBalanceDataRepository)
+    @Injected(Dependencies.core.userBalanceDataRepository)
     private var dataRepo: UserBalanceDataInterface
 
     // MARK: - Methods
-    func getBalances() async throws -> [BalanceEntity] {
+    public func getBalances() async throws -> [BalanceEntity] {
         try await dataRepo.getUserBalances()
     }
 }
 
 // MARK: - Factory
-extension Container {
+public extension Container {
     static let userBalanceUseCase = Factory { UserBalanceUseCase() as UserBalanceUseCaseInterface }
 }

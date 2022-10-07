@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol UserBalanceDataInterface {
+public protocol UserBalanceDataInterface {
     func getUserBalances() async throws -> [BalanceEntity]
 }

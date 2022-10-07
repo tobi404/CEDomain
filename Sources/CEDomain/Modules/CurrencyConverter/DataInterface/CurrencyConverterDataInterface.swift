@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol CurrencyConverterDataInterface {
+public protocol CurrencyConverterDataInterface {
     func getExchangedValue(amount: String, fromCurrency: CurrencyEntity, toCurrency: CurrencyEntity) async throws -> CurrencyExchangeResultEntity
     func getAvailableCurrencies() async throws -> [CurrencyEntity]
 }

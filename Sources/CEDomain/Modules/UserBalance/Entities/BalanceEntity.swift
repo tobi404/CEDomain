@@ -7,30 +7,30 @@
 
 import Foundation
 
-final class BalanceEntity {
+public final class BalanceEntity {
 
     // MARK: - Private Set Properties
-    private(set) var amount: Decimal
-    private(set) var currency: any Currency
+    public var amount: Decimal
+    public var currency: any Currency
 
     // MARK: - Lifecycle
-    init (amount: Decimal, currency: any Currency) {
+    public init (amount: Decimal, currency: any Currency) {
         self.amount = amount
         self.currency = currency
     }
 
     // MARK: - Methods
-    func updateAmount(_ amount: Decimal) {
+    public func updateAmount(_ amount: Decimal) {
         self.amount = amount
     }
 }
 
 extension BalanceEntity: Hashable {
-    static func == (lhs: BalanceEntity, rhs: BalanceEntity) -> Bool {
+    public static func == (lhs: BalanceEntity, rhs: BalanceEntity) -> Bool {
         lhs.amount == rhs.amount
     }
 
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine(amount)
         hasher.combine(currency.name)
         hasher.combine(currency.symbol)
