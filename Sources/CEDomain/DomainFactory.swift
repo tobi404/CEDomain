@@ -18,7 +18,15 @@ public class Dependencies {
 }
 
 public protocol CoreContainerInterface {
+    func registerMocks()
+
     // Modules
     var userBalanceDataRepository: Factory<UserBalanceDataInterface> { get }
     var currencyConverterDataRepository: Factory<CurrencyConverterDataInterface> { get }
+}
+
+public extension Container {
+    static func registerMocks() {
+        Dependencies.core.registerMocks()
+    }
 }
