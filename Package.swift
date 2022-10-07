@@ -27,9 +27,6 @@ let package = Package(
             ]),
         .testTarget(
             name: "CEDomainTests",
-            dependencies: [
-                "CEDomain",
-                .product(name: "Factory", package: "Factory"),
-            ]),
+            dependencies: ["CEDomain"]),
     ]
 )
