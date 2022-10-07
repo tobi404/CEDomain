@@ -7,8 +7,13 @@
 
 import Foundation
 
-struct CEError: Error {
-    let errorCode: Int = 0
-    let userMessage: String
-    let debugMessage: String
+public struct CEError: Error {
+    public let errorCode: Int = 0
+    public let userMessage: String
+    public let debugMessage: String
+
+    public init(userMessage: String, debugMessage: String) {
+        self.userMessage = userMessage
+        self.debugMessage = debugMessage
+    }
 }
